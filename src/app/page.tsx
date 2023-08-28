@@ -45,13 +45,28 @@ export default function Home() {
         }
     }
 
+    if (isOrderSubmitted) {
+        return (
+            <main className={s.main}>
+                <div className={s.asteroids_block}>
+                    <h1 className={s.asteroids_title}>Заказ отправлен!</h1>
+                    <AsteroidsList
+                        isOrderSubmitted={isOrderSubmitted}
+                        changeOrderedAsteroids={changeOrderedAsteroids}
+                        orderedAsteroids={orderedAsteroids}
+                        unit={distanceUnit}
+                        asteroidsData={asteroidsData}
+                    />
+                </div>
+            </main>
+        );
+    }
+
     return (
         <main className={s.main}>
             <div className={s.asteroids_block}>
                 <h1 className={s.asteroids_title}>
-                    {isOrderSubmitted
-                        ? "Заказ отправлен!"
-                        : "Ближайшие подлёты астероидов"}
+                    Ближайшие подлёты астероидов
                 </h1>
                 <DistanceControls
                     unit={distanceUnit}
@@ -64,7 +79,10 @@ export default function Home() {
                     asteroidsData={asteroidsData}
                 />
             </div>
-            {isOrderSubmitted && <Cart count={orderedAsteroids.length} />}
+            <Cart
+                handleOrderSubmit={() => setIsOrderSubmitted(true)}
+                count={orderedAsteroids.length}
+            />
         </main>
     );
 }

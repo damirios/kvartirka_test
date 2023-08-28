@@ -104,8 +104,8 @@ const asteroid3: TAsteroidData = {
             estimated_diameter_max: 15,
         },
         meters: {
-            estimated_diameter_min: 12,
-            estimated_diameter_max: 15,
+            estimated_diameter_min: 120,
+            estimated_diameter_max: 150,
         },
         miles: {
             estimated_diameter_min: 12,
@@ -138,7 +138,7 @@ const asteroid3: TAsteroidData = {
     date: "2023-07-30"
 }
 
-const asteroids = [asteroid1, asteroid2, asteroid3];
+const asteroids = [asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3];
 
 export const asteroidsObj = {
     "2023-08-29" : asteroids

@@ -6,13 +6,13 @@ import s from "./AsteroidsListItem.module.css";
 
 import asteroidIcon from "@/static/asteroid.png";
 import dangerIcon from "@/static/danger.png";
-import { useEffect, useState } from "react";
 
 interface IAstreroidsListItemProps {
     asteroid: TAsteroidData;
     unit: TDistanceUnit;
     orderedAsteroids: string[];
     addOrRemoveAsteroidFromOrderList: (id: string) => void;
+    isOrderSubmitted?: boolean;
 }
 
 export function AsteroidsListItem({
@@ -20,6 +20,7 @@ export function AsteroidsListItem({
     unit,
     orderedAsteroids,
     addOrRemoveAsteroidFromOrderList,
+    isOrderSubmitted = false,
 }: IAstreroidsListItemProps) {
     const isOrdered = orderedAsteroids.includes(asteroid.id);
 
@@ -56,8 +57,8 @@ export function AsteroidsListItem({
                     <Image
                         src={asteroidIcon}
                         alt="asteroid"
-                        width={22}
-                        height={24}
+                        width={averageDiameter > 99 ? 36.7 : 22}
+                        height={averageDiameter > 99 ? 40 : 24}
                     />
                 </div>
                 <div className={s.asteroid_props}>
@@ -66,13 +67,15 @@ export function AsteroidsListItem({
                 </div>
             </div>
             <div className={s.asteroid_bottom_menu}>
-                <button
-                    onClick={handleOrderClick}
-                    type="button"
-                    className={s.asteroid_order_destroy}
-                >
-                    {isOrdered ? "В корзине" : "Заказать"}
-                </button>
+                {!isOrderSubmitted && (
+                    <button
+                        onClick={handleOrderClick}
+                        type="button"
+                        className={s.asteroid_order_destroy}
+                    >
+                        {isOrdered ? "В корзине" : "Заказать"}
+                    </button>
+                )}
                 <div className={s.asteroid_danger_status}>
                     <Image
                         src={dangerIcon}

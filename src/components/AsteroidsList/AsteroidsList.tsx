@@ -11,6 +11,7 @@ interface IAsteroidsListProps {
     unit: TDistanceUnit;
     changeOrderedAsteroids: (id: string) => void;
     orderedAsteroids: string[];
+    isOrderSubmitted?: boolean;
 }
 
 export function AsteroidsList({
@@ -18,9 +19,10 @@ export function AsteroidsList({
     unit,
     orderedAsteroids,
     changeOrderedAsteroids,
+    isOrderSubmitted = false,
 }: IAsteroidsListProps) {
     if (asteroidsData === null) {
-        return <div>Loading...</div>;
+        return <div className={s.loader}>Loading...</div>;
     }
 
     let asteroids: TAsteroidData[] = [];
@@ -33,8 +35,14 @@ export function AsteroidsList({
         );
     }
 
+    if (isOrderSubmitted) {
+        asteroids = asteroids.filter((asteroid) =>
+            orderedAsteroids.includes(asteroid.id)
+        );
+    }
+
     return (
-        <ul>
+        <ul className={s.asteroids_list}>
             {asteroids.map((asteroid, index) => {
                 return (
                     <AsteroidsListItem
@@ -45,6 +53,7 @@ export function AsteroidsList({
                         unit={unit}
                         key={index}
                         asteroid={asteroid}
+                        isOrderSubmitted={isOrderSubmitted}
                     />
                 );
             })}

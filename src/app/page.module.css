@@ -15,3 +15,31 @@
     align-self: stretch;
     margin-bottom: 8px;
 }
+
+@media (max-width: 1195px) {
+    .main {
+        padding-left: 362px;
+    }
+}
+
+@media (max-width: 997px) {
+    .main {
+        padding-left: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        padding-left: 72px;
+    }
+
+    .asteroids_block {
+        flex: 0 0 279px;
+    }
+}
