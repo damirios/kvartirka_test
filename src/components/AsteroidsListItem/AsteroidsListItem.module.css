@@ -1,0 +1,100 @@
+.list_item:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.list_item:first-child {
+    margin-top: 24px;
+}
+
+.asteroid_date {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 133%;
+    margin-bottom: 8px;
+}
+
+.asteroid_info {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 8px;
+    margin-bottom: 8px;
+}
+
+.asteroid_distance {
+    padding-bottom: 8px;
+}
+
+.asteroid_distance_value {
+    margin-bottom: 8px;
+}
+
+.asteroid_distance_arrow {
+    height: 2px;
+    width: calc(100% - 12px);
+    position: relative;
+    left: 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.asteroid_distance_arrow::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -6px;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 7px solid rgba(255, 255, 255, 0.7);
+}
+
+.asteroid_distance_arrow::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid rgba(255, 255, 255, 0.7);
+}
+
+.asteroid_icon {
+    align-self: center;
+}
+
+.asteroid_bottom_menu {
+    display: flex;
+    column-gap: 10px;
+}
+
+.asteroid_order_destroy {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 182%;
+    letter-spacing: 1px;
+    color: #f86600;
+    background-color: rgba(248, 102, 0, 0.15);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+    padding: 2px 11px;
+}
+
+.asteroid_order_destroy:hover {
+    background-color: #f86600;
+    color: #fff;
+}
+
+.asteroid_danger_status {
+    font-size: 14px;
+    line-height: 142%;
+    color: #e3e5e5;
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+}

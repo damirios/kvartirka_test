@@ -1,0 +1,15 @@
+.main {
+	padding-left: 527px;
+}
+
+.asteroids_block {
+    max-width: 400px;
+}
+
+.asteroids_title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 130%;
+    align-self: stretch;
+    margin-bottom: 8px;
+}

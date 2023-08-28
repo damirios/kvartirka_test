@@ -1,0 +1,21 @@
+.buttons_block {
+
+}
+
+.button {
+    outline: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+
+    line-height: 150%;
+    text-decoration: underline;
+}
+
+.button_selected {
+    text-decoration: none;
+    font-weight: 700;
+}

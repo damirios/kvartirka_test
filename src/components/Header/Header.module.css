@@ -1,0 +1,16 @@
+.header_box {
+    padding: 16px;
+}
+
+.header_title {
+    font-size: 32px;
+    color: #f86600;
+    line-height: normal;
+    margin-bottom: 8px;
+}
+
+.header_subtitle {
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 400;
+}
