@@ -1,9 +1,11 @@
 .main {
 	padding-left: 527px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .asteroids_block {
-    max-width: 400px;
+    flex: 0 0 400px;
 }
 
 .asteroids_title {

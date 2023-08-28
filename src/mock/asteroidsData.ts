@@ -138,7 +138,7 @@ const asteroid3: TAsteroidData = {
     date: "2023-07-30"
 }
 
-const asteroids = [asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3];
+const asteroids = [asteroid1, asteroid2, asteroid3];
 
 export const asteroidsObj = {
     "2023-08-29" : asteroids

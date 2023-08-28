@@ -9,9 +9,16 @@ import s from "./AsteroidsList.module.css";
 interface IAsteroidsListProps {
     asteroidsData: TFormattedAsteroidsData | null;
     unit: TDistanceUnit;
+    changeOrderedAsteroids: (id: string) => void;
+    orderedAsteroids: string[];
 }
 
-export function AsteroidsList({ asteroidsData, unit }: IAsteroidsListProps) {
+export function AsteroidsList({
+    asteroidsData,
+    unit,
+    orderedAsteroids,
+    changeOrderedAsteroids,
+}: IAsteroidsListProps) {
     if (asteroidsData === null) {
         return <div>Loading...</div>;
     }
@@ -31,6 +38,10 @@ export function AsteroidsList({ asteroidsData, unit }: IAsteroidsListProps) {
             {asteroids.map((asteroid, index) => {
                 return (
                     <AsteroidsListItem
+                        orderedAsteroids={orderedAsteroids}
+                        addOrRemoveAsteroidFromOrderList={
+                            changeOrderedAsteroids
+                        }
                         unit={unit}
                         key={index}
                         asteroid={asteroid}
