@@ -82,7 +82,7 @@ const asteroid2: TAsteroidData = {
         },
         miss_distance: {
             astronomical: '0.3',
-            lunar: '12345',
+            lunar: "4",
             kilometers: '32543',
             miles: '32423',
         },
@@ -128,7 +128,7 @@ const asteroid3: TAsteroidData = {
         },
         miss_distance: {
             astronomical: '0.3',
-            lunar: '12345',
+            lunar: '1',
             kilometers: '3254213',
             miles: '32423',
         },
@@ -138,7 +138,7 @@ const asteroid3: TAsteroidData = {
     date: "2023-07-30"
 }
 
-const asteroids = [asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3, asteroid1, asteroid2, asteroid3];
+const asteroids = [asteroid1, asteroid2, asteroid3];
 
 export const asteroidsObj = {
     "2023-08-29" : asteroids

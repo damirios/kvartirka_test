@@ -6,6 +6,7 @@ import s from "./AsteroidsListItem.module.css";
 
 import asteroidIcon from "@/static/asteroid.png";
 import dangerIcon from "@/static/danger.png";
+import { getLunarUnitsNoun } from "@/utils/getNoun";
 
 interface IAstreroidsListItemProps {
     asteroid: TAsteroidData;
@@ -35,7 +36,8 @@ export function AsteroidsListItem({
     const missDistance = Math.floor(
         +asteroid.close_approach_data[0].miss_distance[missDistanceType]
     );
-    const missDistanceUnit = unit === "km" ? " км" : " лунные орбиты";
+    const missDistanceUnit =
+        unit === "km" ? " км" : " " + getLunarUnitsNoun(missDistance);
 
     function handleOrderClick() {
         addOrRemoveAsteroidFromOrderList(asteroid.id);

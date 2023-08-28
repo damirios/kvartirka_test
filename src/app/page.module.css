@@ -16,6 +16,15 @@
     margin-bottom: 8px;
 }
 
+.asteroids_back_button {
+    cursor: pointer;
+    color: #f86600;
+}
+
+.asteroids_back_button:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 1195px) {
     .main {
         padding-left: 362px;

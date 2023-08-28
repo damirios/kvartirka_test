@@ -45,11 +45,22 @@ export default function Home() {
         }
     }
 
+    function handleBackToListClick() {
+        setOrderedAsteroids([]);
+        setIsOrderSubmitted(false);
+    }
+
     if (isOrderSubmitted) {
         return (
             <main className={s.main}>
                 <div className={s.asteroids_block}>
                     <h1 className={s.asteroids_title}>Заказ отправлен!</h1>
+                    <h2
+                        className={s.asteroids_back_button}
+                        onClick={handleBackToListClick}
+                    >
+                        Вернуться к списку
+                    </h2>
                     <AsteroidsList
                         isOrderSubmitted={isOrderSubmitted}
                         changeOrderedAsteroids={changeOrderedAsteroids}
