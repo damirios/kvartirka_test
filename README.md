@@ -1,4 +1,6 @@
 ### Спасите Землю от астероидов
+### [Live Demo](https://kvartirka-test-nine.vercel.app/asteroid/3328631)
+
 
 #### Запуск приложения
 1) Стянуть на локальную машину (git clone https://github.com/damirios/kvartirka_test.git)
