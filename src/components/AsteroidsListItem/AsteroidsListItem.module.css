@@ -22,6 +22,17 @@
 
 .asteroid_distance {
     padding-bottom: 8px;
+    white-space: nowrap;
+}
+
+.asteroid_name {
+    text-decoration: underline;
+    font-weight: 700;
+    line-height: 150%;
+}
+.asteroid_size {
+    font-size: 12px;
+    line-height: 133%;
 }
 
 .asteroid_distance_value {

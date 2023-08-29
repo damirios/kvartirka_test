@@ -14,6 +14,7 @@
     line-height: 130%;
     align-self: stretch;
     margin-bottom: 8px;
+    max-width: 100%;
 }
 
 .asteroids_back_button {
@@ -45,10 +46,10 @@
 
 @media (max-width: 600px) {
     .main {
-        padding-left: 72px;
+        padding-left: 45px;
     }
 
     .asteroids_block {
-        flex: 0 0 279px;
+        flex: 0 0 280px;
     }
 }

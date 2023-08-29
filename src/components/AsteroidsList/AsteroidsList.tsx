@@ -43,7 +43,7 @@ export function AsteroidsList({
                         ...result.asteroids,
                     },
                 });
-                setNextLink(result.pageLinks.next);
+                setNextLink(result.pageLinks.next.replace("http", "https"));
             })
             .catch((error) => {
                 setError(error);

@@ -19,6 +19,7 @@ export async function fetchAsteroids(link?: string): Promise<TFormattedAsteroids
     .then((result: TAsteroidsApiResponse) => {
         requestTimes++;
         console.log('request count: ', requestTimes);
+        console.log(result);
         return {pageLinks: result.links, asteroids: result.near_earth_objects}
     })
     .catch(error => {
