@@ -61,7 +61,7 @@ export function AsteroidsList({
     }, [isLoading]);
 
     function handleScroll() {
-        if (!listRef.current) {
+        if (!listRef.current || isOrderSubmitted) {
             return;
         }
 
@@ -115,7 +115,7 @@ export function AsteroidsList({
                     />
                 );
             })}
-            {isLoading && (
+            {isLoading && !isOrderSubmitted && (
                 <div className={s.loader}>Loading other asteroids...</div>
             )}
         </ul>
