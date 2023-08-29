@@ -49,10 +49,10 @@ table {
 a {
 	text-decoration: none;
 	display: inline-block;
+	color: inherit;
 }
 
 a:hover {
-	color: #f86600;
 	text-decoration: underline;
 }
 

@@ -1,0 +1,21 @@
+.asteroid_box {
+    padding: 20px 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.asteroid_info_block {
+    margin-bottom: 8px;
+    font-size: 26px;
+}
+
+.asteroid_main_info {
+    margin-bottom: 24px;
+    line-height: 180%;
+}
+
+@media (max-width: 768px) {
+    .asteroid_box {
+        padding: 20px 16px;
+    }
+}

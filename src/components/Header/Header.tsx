@@ -10,7 +10,7 @@ const passionOneFont = Passion_One({
 export function Header() {
     return (
         <header className={s.header_box}>
-            <Link href="/">
+            <Link className={s.header_link} href="/">
                 <h1 className={`${s.header_title} ${passionOneFont.className}`}>
                     ARMAGEDDON 2023
                 </h1>

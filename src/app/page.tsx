@@ -1,25 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { AsteroidsList } from "@/components/AsteroidsList/AsteroidsList";
 import { Cart } from "@/components/Cart/Cart";
 import { DistanceControls } from "@/components/DistanceControls/DistanceControls";
-import { fetchAsteroids } from "@/services/api";
-import { TDistanceUnit, TFormattedAsteroidsData } from "@/types/asteroidTypes";
-import { useEffect, useState } from "react";
+import { TDistanceUnit } from "@/types/asteroidTypes";
 import s from "./page.module.css";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
 
 export default function Home() {
-    const [asteroidsData, setAsteroidsData] =
-        useState<TFormattedAsteroidsData | null>(null);
     const [distanceUnit, setDistanceUnit] = useState<TDistanceUnit>("km");
     const [orderedAsteroids, setOrderedAsteroids] = useState<string[]>([]);
     const [isOrderSubmitted, setIsOrderSubmitted] = useState<boolean>(false);
-
-    useEffect(() => {
-        fetchAsteroids().then((result) => {
-            setAsteroidsData(result);
-        });
-    }, []);
 
     function changeDistanceUnit(unit: TDistanceUnit) {
         setDistanceUnit(unit);
@@ -52,48 +44,52 @@ export default function Home() {
 
     if (isOrderSubmitted) {
         return (
-            <main className={s.main}>
-                <div className={s.asteroids_block}>
-                    <h1 className={s.asteroids_title}>Заказ отправлен!</h1>
-                    <h2
-                        className={s.asteroids_back_button}
-                        onClick={handleBackToListClick}
-                    >
-                        Вернуться к списку
-                    </h2>
-                    <AsteroidsList
-                        isOrderSubmitted={isOrderSubmitted}
-                        changeOrderedAsteroids={changeOrderedAsteroids}
-                        orderedAsteroids={orderedAsteroids}
-                        unit={distanceUnit}
-                        asteroidsData={asteroidsData}
-                    />
-                </div>
-            </main>
+            <>
+                <Sidebar />
+                <main className={s.main}>
+                    <div className={s.asteroids_block}>
+                        <h1 className={s.asteroids_title}>Заказ отправлен!</h1>
+                        <h2
+                            className={s.asteroids_back_button}
+                            onClick={handleBackToListClick}
+                        >
+                            Вернуться к списку
+                        </h2>
+                        <AsteroidsList
+                            changeOrderedAsteroids={changeOrderedAsteroids}
+                            orderedAsteroids={orderedAsteroids}
+                            unit={distanceUnit}
+                            isOrderSubmitted={true}
+                        />
+                    </div>
+                </main>
+            </>
         );
     }
 
     return (
-        <main className={s.main}>
-            <div className={s.asteroids_block}>
-                <h1 className={s.asteroids_title}>
-                    Ближайшие подлёты астероидов
-                </h1>
-                <DistanceControls
-                    unit={distanceUnit}
-                    changeDistanceUnit={changeDistanceUnit}
+        <>
+            <Sidebar />
+            <main className={s.main}>
+                <div className={s.asteroids_block}>
+                    <h1 className={s.asteroids_title}>
+                        Ближайшие подлёты астероидов
+                    </h1>
+                    <DistanceControls
+                        unit={distanceUnit}
+                        changeDistanceUnit={changeDistanceUnit}
+                    />
+                    <AsteroidsList
+                        changeOrderedAsteroids={changeOrderedAsteroids}
+                        orderedAsteroids={orderedAsteroids}
+                        unit={distanceUnit}
+                    />
+                </div>
+                <Cart
+                    handleOrderSubmit={() => setIsOrderSubmitted(true)}
+                    count={orderedAsteroids.length}
                 />
-                <AsteroidsList
-                    changeOrderedAsteroids={changeOrderedAsteroids}
-                    orderedAsteroids={orderedAsteroids}
-                    unit={distanceUnit}
-                    asteroidsData={asteroidsData}
-                />
-            </div>
-            <Cart
-                handleOrderSubmit={() => setIsOrderSubmitted(true)}
-                count={orderedAsteroids.length}
-            />
-        </main>
+            </main>
+        </>
     );
 }

@@ -7,13 +7,14 @@ import s from "./AsteroidsListItem.module.css";
 import asteroidIcon from "@/static/asteroid.png";
 import dangerIcon from "@/static/danger.png";
 import { getLunarUnitsNoun } from "@/utils/getNoun";
+import Link from "next/link";
 
 interface IAstreroidsListItemProps {
     asteroid: TAsteroidData;
     unit: TDistanceUnit;
     orderedAsteroids: string[];
     addOrRemoveAsteroidFromOrderList: (id: string) => void;
-    isOrderSubmitted?: boolean;
+    isOrderSubmitted: boolean;
 }
 
 export function AsteroidsListItem({
@@ -21,7 +22,7 @@ export function AsteroidsListItem({
     unit,
     orderedAsteroids,
     addOrRemoveAsteroidFromOrderList,
-    isOrderSubmitted = false,
+    isOrderSubmitted,
 }: IAstreroidsListItemProps) {
     const isOrdered = orderedAsteroids.includes(asteroid.id);
 
@@ -51,7 +52,8 @@ export function AsteroidsListItem({
             <div className={s.asteroid_info}>
                 <div className={s.asteroid_distance}>
                     <div className={s.asteroid_distance_value}>
-                        {missDistance + missDistanceUnit}
+                        {new Intl.NumberFormat("ru-RU").format(missDistance) +
+                            missDistanceUnit}
                     </div>
                     <div className={s.asteroid_distance_arrow}></div>
                 </div>
@@ -63,10 +65,18 @@ export function AsteroidsListItem({
                         height={averageDiameter > 99 ? 40 : 24}
                     />
                 </div>
-                <div className={s.asteroid_props}>
-                    <div className={s.asteroid_name}>{asteroid.name}</div>
-                    <div className={s.asteroid_size}>Ø {averageDiameter} м</div>
-                </div>
+                <Link href={`/asteroid/${asteroid.id}`}>
+                    <div className={s.asteroid_props}>
+                        <div className={s.asteroid_name}>{asteroid.name}</div>
+                        <div className={s.asteroid_size}>
+                            Ø{" "}
+                            {new Intl.NumberFormat("ru-RU").format(
+                                averageDiameter
+                            )}{" "}
+                            м
+                        </div>
+                    </div>
+                </Link>
             </div>
             <div className={s.asteroid_bottom_menu}>
                 {!isOrderSubmitted && (
@@ -78,15 +88,17 @@ export function AsteroidsListItem({
                         {isOrdered ? "В корзине" : "Заказать"}
                     </button>
                 )}
-                <div className={s.asteroid_danger_status}>
-                    <Image
-                        src={dangerIcon}
-                        alt="danger"
-                        width={15}
-                        height={15}
-                    />
-                    <span>Опасен</span>
-                </div>
+                {asteroid.is_potentially_hazardous_asteroid && (
+                    <div className={s.asteroid_danger_status}>
+                        <Image
+                            src={dangerIcon}
+                            alt="danger"
+                            width={15}
+                            height={15}
+                        />
+                        <span>Опасен</span>
+                    </div>
+                )}
             </div>
         </li>
     );

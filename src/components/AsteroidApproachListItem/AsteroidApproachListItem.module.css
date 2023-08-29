@@ -1,0 +1,41 @@
+.approach_item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.approach_info_block {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+.approach_info_block span {
+    margin-top: 4px;
+    display: block;
+    color: #f86600;
+}
+
+.approach_item {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.approach_date {
+    font-size: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    row-gap: 5px;
+}
+
+@media (max-width: 1195px) {
+    .approach_date {
+        flex-direction: column;
+        justify-content: start;
+        row-gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .approach_date {
+        font-size: 20px;
+    }
+}

@@ -23,10 +23,7 @@ export default function RootLayout({
             <body className={helveticaFont.className}>
                 <div className="wrapper">
                     <Header />
-                    <div className="content">
-                        <Sidebar />
-                        {children}
-                    </div>
+                    <div className="content">{children}</div>
                     <Footer />
                 </div>
             </body>
